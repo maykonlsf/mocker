@@ -6,8 +6,10 @@ type UseCase interface {
 	ConfigRouter(config *entities.MockerConfig) error
 }
 
-func NewUseCase(config *entities.MockerConfig) UseCase {
-	return &useCase{}
+func NewUseCase(httpRouter HTTPRouter) UseCase {
+	return &useCase{
+		httpRouter: httpRouter,
+	}
 }
 
 type useCase struct {
