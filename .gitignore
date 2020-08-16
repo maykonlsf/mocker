@@ -2,3 +2,4 @@
 .vscode/
 mocker.yaml
 mocker
+cover.out
