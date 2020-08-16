@@ -15,6 +15,6 @@ type APIConfig struct {
 type APIResponse struct {
 	Status  int
 	Headers map[string]string
-	Body    interface{}
+	Body    string
 	Time    time.Duration
 }
