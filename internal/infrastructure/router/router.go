@@ -3,12 +3,18 @@ package router
 import (
 	"errors"
 	"fmt"
+	"net"
 	"strings"
 	"time"
 
 	"github.com/maykonlf/mocker/internal/model/entities"
 	"github.com/valyala/fasthttp"
 )
+
+type Router interface {
+	Set(route, method string, response *entities.APIResponse) error
+	Listen(ln net.Listener) error
+}
 
 func NewRouter(addr string) Router {
 	return &router{
@@ -23,10 +29,10 @@ type router struct {
 	handler fasthttp.RequestHandler
 }
 
-func (r *router) Listen() error {
+func (r *router) Listen(ln net.Listener) error {
 	r.handler = r.rootHandler
 	fmt.Println("serving mock API at", r.addr)
-	return fasthttp.ListenAndServe(r.addr, r.handler)
+	return fasthttp.Serve(ln, r.handler)
 }
 
 func (r *router) Set(route, method string, response *entities.APIResponse) error {

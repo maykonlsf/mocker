@@ -4,10 +4,11 @@ import (
 	"github.com/maykonlf/mocker/internal/infrastructure/router"
 	"github.com/maykonlf/mocker/internal/model/entities"
 	"github.com/maykonlf/mocker/internal/usecase/mocker"
+	"net"
 )
 
 type Server interface {
-	Listen() error
+	Listen(ln net.Listener) error
 }
 
 func NewServer(httpRouter router.Router, useCase mocker.UseCase, mockerConfig *entities.MockerConfig) (Server, error) {
@@ -27,6 +28,6 @@ type server struct {
 	useCase mocker.UseCase
 }
 
-func (s *server) Listen() error {
-	return s.router.Listen()
+func (s *server) Listen(ln net.Listener) error {
+	return s.router.Listen(ln)
 }

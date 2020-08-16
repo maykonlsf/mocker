@@ -2,7 +2,7 @@ lint:
 	@golangci-lint run ./...
 
 mocks:
-	mockgen -source=internal/infrastructure/router/interface.go -destination=internal/infrastructure/server/router_mock_test.go -package=server
+	mockgen -source=internal/infrastructure/router/router.go -destination=internal/infrastructure/server/router_mock_test.go -package=server
 	mockgen -source=internal/usecase/mocker/usecase.go -destination=internal/infrastructure/server/usecase_mock_test.go -package=server
 	mockgen -source=internal/usecase/mocker/services.go -destination=internal/usecase/mocker/services_mock_test.go -package=mocker
 

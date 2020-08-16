@@ -2,11 +2,11 @@ package server
 
 import (
 	"errors"
-	"testing"
-
 	"github.com/golang/mock/gomock"
 	"github.com/maykonlf/mocker/internal/model/entities"
 	"github.com/stretchr/testify/assert"
+	"github.com/valyala/fasthttp/fasthttputil"
+	"testing"
 )
 
 func TestNewServer(t *testing.T) {
@@ -49,8 +49,8 @@ func TestListen(t *testing.T) {
 		assert.NotNil(t, server)
 		assert.Nil(t, err)
 
-		routerMock.EXPECT().Listen().Return(nil)
-		err = server.Listen()
+		routerMock.EXPECT().Listen(gomock.Any()).Return(nil)
+		err = server.Listen(fasthttputil.NewInmemoryListener())
 		assert.Nil(t, err)
 	})
 }
