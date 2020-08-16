@@ -7,7 +7,7 @@ import (
 )
 
 type Server interface {
-	Listen()
+	Listen() error
 }
 
 func NewServer(httpRouter router.Router, useCase mocker.UseCase, mockerConfig *entities.MockerConfig) (Server, error) {
@@ -27,6 +27,6 @@ type server struct {
 	useCase mocker.UseCase
 }
 
-func (s *server) Listen() {
-	s.router.Listen()
+func (s *server) Listen() error {
+	return s.router.Listen()
 }

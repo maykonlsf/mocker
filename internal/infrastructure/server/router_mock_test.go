@@ -48,9 +48,11 @@ func (mr *MockRouterMockRecorder) Set(route, method, response interface{}) *gomo
 }
 
 // Listen mocks base method
-func (m *MockRouter) Listen() {
+func (m *MockRouter) Listen() error {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "Listen")
+	ret := m.ctrl.Call(m, "Listen")
+	ret0, _ := ret[0].(error)
+	return ret0
 }
 
 // Listen indicates an expected call of Listen

@@ -49,7 +49,8 @@ func TestListen(t *testing.T) {
 		assert.NotNil(t, server)
 		assert.Nil(t, err)
 
-		routerMock.EXPECT().Listen().Times(1)
-		server.Listen()
+		routerMock.EXPECT().Listen().Return(nil)
+		err = server.Listen()
+		assert.Nil(t, err)
 	})
 }

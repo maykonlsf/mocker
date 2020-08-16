@@ -23,10 +23,10 @@ type router struct {
 	handler fasthttp.RequestHandler
 }
 
-func (r *router) Listen() {
+func (r *router) Listen() error {
 	r.handler = r.rootHandler
 	fmt.Println("serving mock API at", r.addr)
-	panic(fasthttp.ListenAndServe(r.addr, r.handler))
+	return fasthttp.ListenAndServe(r.addr, r.handler)
 }
 
 func (r *router) Set(route, method string, response *entities.APIResponse) error {
