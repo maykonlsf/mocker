@@ -10,7 +10,7 @@ import (
 	"github.com/valyala/fasthttp"
 )
 
-func NewRouter(addr string) Interface {
+func NewRouter(addr string) Router {
 	return &router{
 		configs: map[string]map[string]*entities.APIResponse{},
 		addr:    addr,

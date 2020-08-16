@@ -10,20 +10,20 @@ type Server interface {
 	Listen()
 }
 
-func NewServer(httpRouter router.Interface, useCase mocker.UseCase, mockerConfig *entities.MockerConfig) Server {
+func NewServer(httpRouter router.Router, useCase mocker.UseCase, mockerConfig *entities.MockerConfig) (Server, error) {
 	err := useCase.ConfigRouter(mockerConfig)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	return &server{
 		router:  httpRouter,
 		useCase: useCase,
-	}
+	}, nil
 }
 
 type server struct {
-	router  router.Interface
+	router  router.Router
 	useCase mocker.UseCase
 }
 

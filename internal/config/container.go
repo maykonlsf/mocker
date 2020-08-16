@@ -15,7 +15,7 @@ import (
 
 type Container interface {
 	GetAddr() string
-	GetRouter() router.Interface
+	GetRouter() router.Router
 	GetMockerUseCase() mocker.UseCase
 	GetMockerConfig() *entities.MockerConfig
 	GetServer() server.Server
@@ -37,7 +37,7 @@ func NewContainer() Container {
 
 type container struct {
 	config        *entities.MockerConfig
-	router        router.Interface
+	router        router.Router
 	mockerUseCase mocker.UseCase
 	server        server.Server
 }
@@ -46,7 +46,7 @@ func (c *container) GetAddr() string {
 	return *addr
 }
 
-func (c *container) GetRouter() router.Interface {
+func (c *container) GetRouter() router.Router {
 	if c.router == nil {
 		c.router = router.NewRouter(c.GetAddr())
 	}
@@ -68,7 +68,12 @@ func (c *container) GetMockerConfig() *entities.MockerConfig {
 
 func (c *container) GetServer() server.Server {
 	if c.server == nil {
-		c.server = server.NewServer(c.GetRouter(), c.GetMockerUseCase(), c.GetMockerConfig())
+		svr, err := server.NewServer(c.GetRouter(), c.GetMockerUseCase(), c.GetMockerConfig())
+		if err != nil {
+			panic(err)
+		}
+
+		c.server = svr
 	}
 
 	return c.server
