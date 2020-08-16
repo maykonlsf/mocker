@@ -2,6 +2,7 @@ package router
 
 import (
 	"errors"
+	"fmt"
 	"strings"
 	"time"
 
@@ -24,6 +25,7 @@ type router struct {
 
 func (r *router) Listen() {
 	r.handler = r.rootHandler
+	fmt.Println("serving mock API at", r.addr)
 	panic(fasthttp.ListenAndServe(r.addr, r.handler))
 }
 
