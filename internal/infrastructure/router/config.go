@@ -56,7 +56,7 @@ type APIResponse struct {
 
 func (r *APIResponse) ToEntity() (*entities.APIResponse, error) {
 	duration, err := time.ParseDuration(r.Time)
-	if err != nil {
+	if err != nil && len(r.Time) > 0 {
 		return nil, fmt.Errorf("failed to parse response duration: %s", err)
 	}
 
