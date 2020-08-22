@@ -1,3 +1,7 @@
+SHELL := /bin/bash
+
+SRC = $(shell find . -type f -name '*.go' -not -iname '*.pb.*' -not -iname '*_mock_test.go')
+
 lint:
 	@golangci-lint run ./...
 
@@ -18,3 +22,11 @@ build:
 
 clean:
 	@go clean
+
+fmt:
+	@gofmt -s -l -w $(SRC)
+
+goimports:
+	@goimports -w -local github.com/golangci/golangci-lint $(SRC)
+
+format: fmt goimports
