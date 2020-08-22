@@ -2,10 +2,11 @@ package mocker
 
 import (
 	"errors"
+	"testing"
+
 	"github.com/golang/mock/gomock"
 	"github.com/maykonlf/mocker/internal/model/entities"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestSetup(t *testing.T) {

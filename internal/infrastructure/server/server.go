@@ -1,10 +1,11 @@
 package server
 
 import (
+	"net"
+
 	"github.com/maykonlf/mocker/internal/infrastructure/router"
 	"github.com/maykonlf/mocker/internal/model/entities"
 	"github.com/maykonlf/mocker/internal/usecase/mocker"
-	"net"
 )
 
 type Server interface {

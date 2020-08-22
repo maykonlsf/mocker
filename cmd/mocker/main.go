@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/maykonlf/mocker/internal/config"
 	"net"
+
+	"github.com/maykonlf/mocker/internal/config"
 )
 
 func main() {

@@ -2,11 +2,12 @@ package server
 
 import (
 	"errors"
+	"testing"
+
 	"github.com/golang/mock/gomock"
 	"github.com/maykonlf/mocker/internal/model/entities"
 	"github.com/stretchr/testify/assert"
 	"github.com/valyala/fasthttp/fasthttputil"
-	"testing"
 )
 
 func TestNewServer(t *testing.T) {
