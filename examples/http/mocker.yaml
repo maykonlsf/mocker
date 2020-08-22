@@ -1,0 +1,22 @@
+api:
+  - routes:
+    - /v1/books
+    - /v2/books
+    methods:
+    - get
+    response:
+      status: 200
+      headers:
+        Content-Type: application/json
+      body: >
+        [{
+            "id: "7d619e9b-9fd2-4abb-b9b4-cfa5811e97a5",
+            "title": "Clean Code: A Handbook of Agile Software Craftsmanship"
+        }, {
+            "id: "46c1bc9f-2ae0-4d73-bf9d-531fa1898537",
+            "title": "Clean Architecture: A Craftsman's Guide to Software Structure and Design"
+        }, {
+            "id: "c8daf68a-5a28-4438-91c1-9f5835ad6439",
+            "title": "Refactoring: Improving the Design of Existing Code"
+        }]
+      time: 200ms
