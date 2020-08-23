@@ -1,9 +1,9 @@
 # Mocker
 
-Simple and lightweight tool to create and share mocked services for development or test environment.
+A simple and lightweight tool to create and share mocked services for development or test environment.
 
 ## Usage
-Mocker could be used through cli command or docker container.
+Mocker could be used through the command line or docker container.
 
 ### CLI
 #### Installation
@@ -30,13 +30,13 @@ $ docker run -d -v .:/mocker -p 8081:8081 maykonlf/mocker
 
 ## Mock Specs - mocker.yaml
 * `api`: describes mocked API specs
-  * `routes`: list of matching api routes
+  * `routes`: list of matching API routes.
   * `methods`: list of matching HTTP methods (must be in lowercase)
-  * `response`: describes the response mocker should return when the received requests matches the specs above.
-    * `status`: HTTP status code
+  * `response`: describes the response mocker should return when the received requests match the specs above.
+    * `status`: HTTP response status code
     * `headers`: key-value response headers
     * `body`: response body string
-    * `time`: time to wait before respond the request - useful to simulate API processing time (ex: `200ms`, `1s`)
+    * `time`: time to wait before responding to the request - useful to simulate API processing time (ex: `200ms`, `1s`)
 
 ### Example
 ```yaml
