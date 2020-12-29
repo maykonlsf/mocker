@@ -1,4 +1,4 @@
-# Mocker
+![Mocker](./assets/mocker-logo.png)
 
 A simple and lightweight tool to create and share mocked services for development or test environment.
 
