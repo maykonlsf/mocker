@@ -8,7 +8,7 @@ Mocker could be used through the command line or docker container.
 ### CLI
 #### Installation
 ```bash
-$ go get github.com/maykonlf/mocker/cmd/mocker
+$ go install github.com/maykonlf/mocker/cmd/mocker@latest
 ```
 
 #### Flags
